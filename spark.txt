@@ -1,0 +1,35 @@
+ spark :
+ 
+ Add an alias to your .bashrc file by doing vi ~/.bashrc
+ 
+ SPARK_CONFIG_ARGS=(
+  '--conf' 'spark.sql.orc.filterPushdown=true'
+  '--conf' 'spark.sql.hive.convertMetastoreOrc=false'
+  '--conf' 'spark.shuffle.service.enabled=true'
+  '--conf' 'spark.dynamicAllocation.enabled=true'
+  '--conf' 'spark.dynamicAllocation.initialExecutors=1'
+  '--conf' 'spark.dynamicAllocation.minExecutors=1'
+  '--conf' 'spark.dynamicAllocation.maxExecutors=100'
+  '--conf' 'spark.dynamicAllocation.schedulerBacklogTimeout=5'
+  '--conf' 'spark.dynamicAllocation.executorIdleTimeout=60'
+)
+alias spark-shell="spark-shell --master yarn-client --driver-memory 5g --conf spark.driver.maxResultSize=5g ${SPARK_CONFIG_ARGS[@]}"
+
+	
+source ~/.bashrc
+
+spark-shell
+
+
+
+
+sqoop:
+
+Apache Sqoop(TM) is a tool designed for efficiently transferring bulk data between Apache Hadoop and structured datastores such as relational databases. Most Sqoop processes are handled here at Aetna by the Operations/Ingestion Team (because most production databases are locked down). However sqoop is open source, and generally available on all Hadoop servers. 'Sqoop is a command-line interface application for transferring data between relational databases and Hadoop. [ 1] It supports incremental loads of a single table or a free form SQL query as well as saved jobs which can be run multiple times to import updates made to a database since the last import.'
+
+
+https://www.youtube.com/watch?v=8NzcZzCrOcU
+
+https://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html - Apache Sqoop user guide.
+ http://hortonworks.com/hadoop/sqoop/ - Hortonworks documentation
+ 
